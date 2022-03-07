@@ -94,7 +94,7 @@
       icon: "mdi-github",
       text: "GitHub repo",
       name: "",
-      link: "https://github.com/nitslaszlo/jedlik-vite-ts-template",
+      link: "https://github.com/CserpakRobert/ForroKasa-FrontEnd",
       disabled: false,
     },
     {
