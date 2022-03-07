@@ -1,11 +1,11 @@
 # Vue3 + TypeScript + Vite + Vuetify3 + Pinia + Axios + i18n + Vitest + ESLint + Prettier
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite.
-The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+It is a school project about a recipe club. We use our teacher's template.
 
-## Test on Netlify
+## Creators:
 
-https://jedlik-vite-ts-template.netlify.app
+Cserpák Róbert
+Klenovszky Áron
 
 ## Links
 
@@ -51,8 +51,8 @@ https://linmasahiro.github.io/vue3-table-lite/
 
 [Vuetif 3 Alpha](https://next.vuetifyjs.com/en/getting-started/installation) is arguably the best component library for Vue 3 and is currently in alpha stage but will soon be ready for production. Lots of premade components will make your job as application developer easier and more fun.
 
-
 ## Pinia
+
 [Pinia](https://pinia.vuejs.org/cookbook/migration-vuex.html#usage-outside-components) is a store library for Vue, it allows you to share a state across components/pages.
 
 ## Add translations to locales files
@@ -67,7 +67,6 @@ Add your files to `/locales` and are you are set.
 ## Vue Global Api
 
 [Vue Global Api](https://github.com/antfu/vue-global-api) globally registers commonly used composition api functions such as ref, reactive and ... . makes your script setup sections cleaner.
-
 
 ## ESLint
 
@@ -98,4 +97,3 @@ Change config at `.prettierrc.js`
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 ```
-
