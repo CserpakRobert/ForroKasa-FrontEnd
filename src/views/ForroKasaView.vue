@@ -1,8 +1,7 @@
 <script setup lang="ts">
   import axios from "axios";
-  import { log } from "console";
-  import { addAbortSignal } from "stream";
   import { Ref } from "vue";
+  import RecipeCard from "../components/RecipeCard.vue";
 
   let searchParams: any = {
     start: 0,
@@ -13,6 +12,7 @@
     filter: "",
   };
   let recipes: Ref<any[]> = ref([]);
+  search();
   function search() {
     console.log(searchParams);
     axios.get("http://localhost:5000/search", { params: searchParams }).then(
@@ -55,10 +55,17 @@
   </table>
 
   <table>
-    <tr v-for="recipe of recipes" ref="recipes">
+    <tr v-for="recipe of recipes" ref="recipes" style="">
       <td>
         {{ recipe.title }}
       </td>
+      <td>
+        {{ recipe.description }}
+      </td>
+      <td>
+        {{ recipe.time }}
+      </td>
     </tr>
   </table>
+  <recipe-card v-for="recipe of recipes" :recipe="recipe"></recipe-card>
 </template>
