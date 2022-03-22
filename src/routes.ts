@@ -18,7 +18,7 @@ import VueMasteryVuexFundamentalsAbout from "./VueMastery_Vuex_Fundamentals/comp
 import VueMasteryVuexFundamentalsEventCreate from "./VueMastery_Vuex_Fundamentals/components/EventCreate.vue";
 import VueMasterySocksView from "./views/VueMasterySocksView.vue";
 import ForroKasaView from "./views/ForroKasaView.vue";
-import FullRecipe from "./views/FullRecipe.vue";
+import FullRecipe from "./ForroKasa/FullRecipe.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -114,12 +114,12 @@ const routes: Array<RouteRecordRaw> = [
     component: AboutView,
   },
   {
-    path: "/forroKasa",
+    path: "/forrokasa",
     name: "ForroKasa",
     component: ForroKasaView,
   },
   {
-    path: "/recipe",
+    path: "/recipe/:id",
     name: "Recipe",
     component: FullRecipe,
   },

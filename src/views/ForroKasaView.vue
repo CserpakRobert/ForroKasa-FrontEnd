@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
   import axios from "axios";
   import { log } from "console";
 
@@ -17,7 +17,7 @@
     )
   );
   console.log(recipes.value);
-</script>
+</script> -->
 <template>
-  <h1>Hello World</h1>
+  <h1>Forr Kása</h1>
 </template>

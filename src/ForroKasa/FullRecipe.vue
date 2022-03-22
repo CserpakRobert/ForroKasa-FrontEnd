@@ -1,19 +1,36 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import RecipeService from "./services/RecipeService";
+  import IRecipe from "./types/IRecipe";
+  const props = defineProps({
+    id: {
+      type: String,
+      required: true,
+    },
+  });
+
+  const event = ref<IRecipe>();
+
+  RecipeService.getRecipe(props.id)
+    .then((response) => {
+      event.value = response.data;
+      console.log(event.value);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+</script>
 
 <template>
-  <div>
+  <div v-if="event">
     <div class="data">
-      <h1>Title</h1>
-      <h2 class="cat">Category</h2>
+      <h1>{{ event.title }}</h1>
+      <h2 class="cat">{{ event.category }}</h2>
     </div>
     <div class="data">
-      <h2>By: Author</h2>
-      <h2>Time</h2>
+      <h2>By: {{ event.author }}</h2>
+      <h2>Time: {{ event.time }}</h2>
     </div>
-    <img
-      alt="saláta"
-      src="https://img-global.cpcdn.com/recipes/6e49bd1639bbebc7/1200x630cq70/photo.jpg"
-    />
+    <img :src="event.image_url" />
     <ul>
       <li>amount unit Name</li>
       <li>amount unit Name</li>
@@ -30,9 +47,6 @@
 </template>
 
 <style>
-  h1 {
-    color: black;
-  }
   h2 {
     color: darkgray;
   }
