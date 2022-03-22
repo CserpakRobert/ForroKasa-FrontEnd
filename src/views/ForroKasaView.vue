@@ -1,37 +1,64 @@
 <script setup lang="ts">
   import axios from "axios";
   import { log } from "console";
+  import { addAbortSignal } from "stream";
   import { Ref } from "vue";
 
   let searchParams: any = {
     start: 0,
-    amount: 10,
+    amount: 5,
     sort: 0,
     category: "",
     userId: "",
     filter: "",
   };
-  let recipes: any | Ref = ref(["léáéláélá", ",.-.,-,.-"]);
-  axios.get("http://localhost:5000/recipes").then(
-    (req) => {
-      recipes = ref(req.data);
-      console.log(req.data);
-      console.log(recipes);
-      console.log(recipes.value);
-      for (let item of recipes) {
-        console.log(item._id);
-      }
-    },
-    (err) => console.log(err)
-  );
+  let recipes: Ref<any[]> = ref([]);
+  function search() {
+    console.log(searchParams);
+    axios.get("http://localhost:5000/search", { params: searchParams }).then(
+      (req) => {
+        recipes.value = req.data;
+      },
+      (err) => console.log(err)
+    );
+  }
+  const headers = ["asd", "dsa"];
 </script>
 
 <template>
-  <h1>Hello World</h1>
   <table>
-    <td>asdsad</td>
-    <p v-for="recipe of this.recipes">
-      {{ "asd" + recipe }}
-    </p>
+    <tr>
+      <td>
+        <label for="filter" style="margin-right: 5px">Filter:</label>
+        <input
+          type="text"
+          name="filter"
+          id="filter"
+          placeholder="filter"
+          v-model="searchParams.filter"
+        />
+      </td>
+      <td>
+        <label for="category" style="margin-right: 5px">Category:</label>
+        <input
+          type="text"
+          name="category"
+          id="category"
+          placeholder="category"
+          v-model="searchParams.category"
+        />
+      </td>
+      <td>
+        <button v-on:click="search()">submit</button>
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr v-for="recipe of recipes" ref="recipes">
+      <td>
+        {{ recipe.title }}
+      </td>
+    </tr>
   </table>
 </template>
