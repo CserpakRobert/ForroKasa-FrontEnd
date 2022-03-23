@@ -8,12 +8,12 @@
     },
   });
 
-  const event = ref<IRecipe>();
+  const recipe = ref<IRecipe>();
 
   RecipeService.getRecipe(props.id)
     .then((response) => {
-      event.value = response.data;
-      console.log(event.value);
+      recipe.value = response.data;
+      console.log(recipe.value);
     })
     .catch((error) => {
       console.log(error);
@@ -21,32 +21,37 @@
 </script>
 
 <template>
-  <div v-if="event">
+  <div v-if="recipe">
     <div class="data">
-      <h1>{{ event.title }}</h1>
-      <h2 class="cat">{{ event.category }}</h2>
+      <h1>{{ recipe.title }}</h1>
+      <h2 class="cat">{{ recipe.category }}</h2>
     </div>
     <div class="data">
-      <h2>By: {{ event.author }}</h2>
-      <h2>Time: {{ event.time }}</h2>
+      <h2>By: {{ recipe.author.name }}</h2>
+      <h2>Time: {{ recipe.time }}</h2>
     </div>
-    <img :src="event.image_url" />
-    <ul>
-      <li>amount unit Name</li>
-      <li>amount unit Name</li>
-      <li>amount unit Name</li>
+    <img :src="recipe.image_url" />
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li v-for="ingredient in recipe.ingredients" :key="ingredient.name">
+        {{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}
+      </li>
     </ul>
-    <h2>Description</h2>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, alias eum. Ullam minus
-      non maiores excepturi? Rerum illo, officia ut aliquam consectetur repellat voluptatibus eum
-      velit aperiam et corrupti blanditiis!
-    </p>
-    <button class="button">Like</button>
+    <div>
+      <h2>Description</h2>
+      <p>{{ recipe.description }}</p>
+    </div>
+    <div class="like">
+      <button class="button">Like</button>
+      <h2>: {{ recipe.likes }}</h2>
+    </div>
   </div>
 </template>
 
 <style>
+  div {
+    margin-bottom: 10px;
+  }
   h2 {
     color: darkgray;
   }
@@ -76,5 +81,10 @@
   .data {
     display: flex;
     justify-content: space-between;
+  }
+  .like {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
   }
 </style>
