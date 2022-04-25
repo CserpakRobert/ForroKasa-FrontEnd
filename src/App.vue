@@ -36,8 +36,8 @@
     {
       icon: "mdi-food-drumstick",
       text: "Forró Kása",
-      name: "",
-      link: "/forrokasa",
+      name: "Forrokasa",
+      route: "/forrokasa",
       disabled: false,
     },
 
