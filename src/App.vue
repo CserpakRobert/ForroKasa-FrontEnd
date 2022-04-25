@@ -32,6 +32,15 @@
       route: "/examples",
       disabled: false,
     },
+
+    {
+      icon: "mdi-food-drumstick",
+      text: "Forró Kása",
+      name: "Forrokasa",
+      route: "/forrokasa",
+      disabled: false,
+    },
+
     {
       icon: "mdi-table",
       text: "v-table",
